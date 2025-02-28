@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float currentVelocityMagnitude;
     private bool isLineVisible;
-    public enum GunType { Portal, Mirror };
-    public GunType currentGun { get; set; }
     public Vector2 endingPosition { get; set; }
     public Vector2 intermediatePosition { get; set; }
     public bool fromPortal;
@@ -43,7 +41,6 @@ public class PlayerController : MonoBehaviour
         fromPortal = false;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentGun = GunType.Portal;
         if (!groundCheck)
         {
             groundCheck = transform;
@@ -68,12 +65,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressed = true;
-        }
-
-        // Switch gun type
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            currentGun = (currentGun == GunType.Portal) ? GunType.Mirror : GunType.Portal;
         }
 
         // Ground check

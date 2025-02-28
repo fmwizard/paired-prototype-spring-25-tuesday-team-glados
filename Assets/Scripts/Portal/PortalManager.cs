@@ -27,28 +27,21 @@ public class PortalManager : MonoBehaviour
 
     private void HandleGunCreation()
     {
-        if (player.currentGun == PlayerController.GunType.Portal)
+        // Left click for blue portal
+        if (Input.GetMouseButtonDown(0))
         {
-            // Left click for blue portal
-            if (Input.GetMouseButtonDown(0))
-            {
-                CreatePortal(PortalType.Blue);
-            }
-            // Right click for orange portal
-            else if (Input.GetMouseButtonDown(1))
-            {
-                CreatePortal(PortalType.Orange);
-            }
+            CreatePortal(PortalType.Blue);
         }
-        else if (player.currentGun == PlayerController.GunType.Mirror)
+        // Right click for orange portal
+        else if (Input.GetMouseButtonDown(1))
         {
-            // Left click for mirror
-            if (Input.GetMouseButtonDown(0))
-            {
-                CreateMirror();
-            }
+            CreatePortal(PortalType.Orange);
         }
-
+        // E click for mirror
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            CreateMirror();
+        }
     }
 
     private RaycastHit2D GetGunRaycastHit()
